@@ -1,25 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Spectral, Schibsted_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const serif = Spectral({ subsets: ['latin'], weight: ['300', '400'], style: ['normal', 'italic'], variable: '--font-serif', display: 'swap' });
-const grotesk = Schibsted_Grotesk({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-grotesk', display: 'swap' });
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' });
+import Shell from './_c/Shell';
 
 export const metadata: Metadata = {
-  title: 'Kene OS',
-  description: 'Private life and business operating system.',
-  robots: { index: false, follow: false },
-  manifest: '/manifest.webmanifest',
-  icons: { icon: '/icon.svg' },
+  title: { default: 'KJO · Original by nature', template: '%s · KJO' },
+  description: 'Photography, film, field notes and the Character clothing line. Direction and distinction.',
+  icons: { icon: '/mark/cross-fleur-white.png' },
 };
-export const viewport: Viewport = { themeColor: '#0a0a0b', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#0a0a0b' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${serif.variable} ${grotesk.variable} ${mono.variable}`}>
-      <body>{children}</body>
+    <html lang="en-GB">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('kjo-seen'))document.documentElement.classList.add('seen')}catch(e){}" }} />
+      </head>
+      <body>
+        <Shell>{children}</Shell>
+      </body>
     </html>
   );
 }
