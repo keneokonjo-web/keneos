@@ -159,3 +159,22 @@ export const products = [
 
 // ---------- Projects ----------
 export const heroProjects = ['h-cup', 'h-tag', 'h-shutters', 'h-doors', 'h-wall', 'h-stencil'];
+
+// ---------- Personal (the /projects page): getting to know me ----------
+// Album years and film details are from public sources; correct them here if needed.
+export const asake = {
+  name: 'Asake',
+  note: 'My favourite artist. Four albums, four tens.',
+  albums: [
+    { img: 'al-mmwtv', title: 'Mr. Money With The Vibe', year: '2022', rating: '10/10' },
+    { img: 'al-woa', title: 'Work of Art', year: '2023', rating: '10/10' },
+    { img: 'al-lungu', title: 'Lungu Boy', year: '2024', rating: '10/10' },
+    { img: 'al-msney', title: 'M$NEY', year: '2026', rating: '10/10' },
+  ],
+};
+
+export const movies = [
+  { n: '01', title: 'The Odyssey', meta: 'Christopher Nolan, 2026', imgs: ['mv-od-1', 'mv-od-2', 'mv-od-3'] },
+  { n: '02', title: 'Inglourious Basterds', meta: 'Quentin Tarantino, 2009', imgs: ['mv-ib-1', 'mv-ib-2', 'mv-ib-3'] },
+  { n: '03', title: 'Dune', meta: 'Denis Villeneuve, 2021', imgs: ['mv-du-1', 'mv-du-2', 'mv-du-3'] },
+];

@@ -45,7 +45,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     const home = path === '/';
     root.classList.toggle('home', home);
-    root.classList.toggle('lock', home || path.startsWith('/work/'));
+    root.classList.toggle('lock', home);
     const upd = () => {
       const y = home && window.innerWidth > 900 ? Math.max(0, window.innerHeight / 2 - 27) : 0;
       root.style.setProperty('--hy', y + 'px');
@@ -66,7 +66,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const els = Array.from(document.querySelectorAll('.rv,.mask'));
+    const els = Array.from(document.querySelectorAll('.rv,.mask,.cr'));
     if (!('IntersectionObserver' in window)) { els.forEach((e) => e.classList.add('in')); return; }
     const io = new IntersectionObserver((en) => en.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     els.forEach((e) => io.observe(e));

@@ -11,11 +11,10 @@ export default async function Entry({ params }: { params: Promise<{ slug: string
   if (!n) notFound();
   return (
     <>
-      <article className="fn">
+      <article className="fn fn-note">
         <div className="col">
           <div className="tag">({n.topic})</div>
           <h1>{n.title}</h1>
-          <p className="sub">{n.sub}</p>
           <div className="meta">Published {n.date} <span>{n.read}</span></div>
           <div className="disc"><b>About this note.</b> {n.disclaimer}</div>
           <div className="body">{n.body.map((t, i) => (<p key={i}>{t}</p>))}</div>

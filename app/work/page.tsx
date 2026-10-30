@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Footer from '../_c/Footer';
 import { companies } from '@/content/site';
 
@@ -13,10 +12,10 @@ export default function Work() {
           <ul>
             {companies.map((c) => (
               <li key={c.code}>
-                <Link href={c.internal ?? '/work/' + c.slug} className={c.red ? 'red' : ''}>
+                <a href={c.internal ?? c.url} className={c.red ? 'red' : ''}>
                   <span className="cd">{c.code}</span>
                   <span className="nm">{c.name}</span>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

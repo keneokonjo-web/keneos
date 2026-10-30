@@ -18,7 +18,7 @@ export default function DHero() {
         <span className="c2">選んで始まる。</span>
         <span className="c3">始まる。</span>
       </div>
-      <div className="cap"><span>Begin by choosing</span><b>DesignedByKJO</b></div>
+      <div className="cap"><span>Begin by choosing</span><img src="/mark/character-logo-black.png" alt="Character" /></div>
     </section>
   );
 }

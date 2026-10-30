@@ -618,3 +618,113 @@ html.hero-light .hdr{mix-blend-mode:normal;text-shadow:0 0 14px rgba(0,0,0,.6)}
 .pjb .pipe{list-style:none;margin-top:clamp(20px,3vw,40px)}.pjb .pipe li{display:grid;grid-template-columns:50px 140px 1fr;align-items:center;padding:12px 0;border-top:1px solid rgba(0,0,0,.2);font-size:14px}.pjb .pipe li i{display:block;height:6px;background:#0a0a0b}
 .pjb .ideas{display:flex;flex-wrap:wrap;gap:10px}.pjb .chip{border:1px solid #0a0a0b;border-radius:99px;padding:10px 18px;transition:background .3s,color .3s}.pjb .chip:hover{background:#0a0a0b;color:#fff}
 @media(max-width:900px){.pjb .cases,.pjb .dash{grid-template-columns:1fr}.pjb .tl{grid-template-columns:1fr;padding-top:0}.pjb .tl::before,.pjb .tl i{display:none}.pjb .tl li{padding:14px 0;border-top:1px solid rgba(0,0,0,.2)}.pjb .bh{grid-template-columns:40px 1fr}.pjb .bh .mono:last-child{display:none}.pjb .node{padding:6px 10px}}
+
+/* ======== round 3 ======== */
+/* designedbykjo hero: character further right on desktop, Character logo in the caption */
+.dh-hero .chars{left:27vw}
+.dh-hero .cap img{width:clamp(130px,11vw,170px);height:auto;margin-top:2px}
+@media(max-width:900px){.dh-hero .chars{left:2vw}.dh-hero .cap img{width:130px}}
+
+/* work index: one left-aligned column block, centred on the page */
+.wk .idx{width:min(520px,100%);text-align:left}
+.wk h1{text-align:left}
+.wk li a{display:grid;grid-template-columns:6em 1fr;justify-content:start;gap:0}
+
+/* footer: smaller wordmark, crescent icon under the contact line */
+.foot .big2 img{width:min(34vw,440px)}
+.foot .c3{display:flex;flex-direction:column;align-items:flex-end;gap:18px;text-align:right}
+.foot .c3 .ic{height:clamp(44px,4.4vw,66px);width:auto}
+@media(max-width:900px){.foot .big2 img{width:min(60vw,320px)}.foot .c3{align-items:flex-start;text-align:left}}
+
+/* home: never scrolls, any width. Mobile hero is three stacked pictures, links in the middle */
+html.home,html.home body{overflow:hidden!important;height:100%}
+@media(max-width:900px){
+  .hero-m{display:grid;grid-template-rows:repeat(3,1fr);position:fixed;inset:0;height:100svh;overflow:hidden;background:#000}
+  .hero-m img{position:relative;width:100%;height:100%;min-height:0;object-fit:cover;filter:grayscale(.3) brightness(.7);border-bottom:1px solid #000}
+  .hero-m .hm-links{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:clamp(8px,2svh,18px);z-index:3;color:#fff;font-family:"Sveningsson","Instrument",sans-serif;font-size:clamp(24px,8vw,38px);line-height:1.1;text-align:center;text-shadow:0 0 18px rgba(0,0,0,.45)}
+  .hero-m .hm-links a{padding-bottom:2px;border-bottom:1px solid transparent}
+  .hero-m .hm-links a:active{border-color:#fff}
+}
+
+/* field notes: narrow centred column between two rules, Sveningsson throughout, scrolling text either side */
+.fn,.fn *{font-family:"Sveningsson","Instrument",sans-serif!important}
+.fn{position:relative;text-align:center;overflow:hidden}
+.fn-list{min-height:100svh;display:grid;place-items:center;padding:110px var(--gut) 50px}
+.fn-col{width:min(440px,100%);border-top:1px solid #0a0a0b;border-bottom:1px solid #0a0a0b;padding:clamp(26px,3.4vw,44px) 0;position:relative;z-index:2;background:#fff}
+.fn-list h1{font-weight:400;font-size:clamp(26px,2.6vw,38px);letter-spacing:0;line-height:1;margin:0 0 clamp(22px,3vw,34px)}
+.fn-ul{list-style:none;display:flex;flex-direction:column;gap:clamp(12px,1.6vw,18px)}
+.fn-ul a{display:inline-block;font-size:clamp(15px,1.3vw,19px);line-height:1.3;border-bottom:1px solid transparent;transition:border-color .3s,letter-spacing .5s var(--ease)}
+.fn-ul a:hover{border-color:#0a0a0b;letter-spacing:.03em}
+.fn-side{position:absolute;top:0;bottom:0;width:clamp(48px,7vw,110px);overflow:hidden;z-index:1;pointer-events:none}
+.fn-side.l{left:clamp(8px,4vw,60px)}.fn-side.r{right:clamp(8px,4vw,60px)}
+.fn-side .t{position:absolute;left:50%;top:0;display:flex;flex-direction:column;align-items:center;writing-mode:vertical-rl;white-space:nowrap;font-size:clamp(28px,3.6vw,56px);line-height:1;letter-spacing:0;color:#0a0a0b;transform:translateX(-50%);animation:fnUp 40s linear infinite}
+.fn-side.r .t{animation-name:fnDown}
+.fn-side .t span{display:flex;gap:.6em;padding:.3em 0}
+.fn-side .t em{font-style:normal;display:inline-flex;align-items:center;gap:.6em}
+.fn-side .t i{font-style:normal;font-size:.5em;opacity:.5}
+@keyframes fnUp{from{transform:translate(-50%,0)}to{transform:translate(-50%,-50%)}}
+@keyframes fnDown{from{transform:translate(-50%,-50%)}to{transform:translate(-50%,0)}}
+@media(max-width:700px){.fn-side{opacity:.12}.fn-side.l{left:0}.fn-side.r{right:0}}
+/* single note: centred, plain paragraphs */
+.fn-note{padding:clamp(120px,12vw,170px) var(--gut) 0}
+.fn-note .col{max-width:620px;margin:0 auto;text-align:center}
+.fn-note h1{font-weight:400;font-size:clamp(30px,3.6vw,54px);letter-spacing:0;line-height:1.05;margin:12px 0 18px}
+.fn-note .body{max-width:none;text-align:center}
+.fn-note .body p{font-size:clamp(16px,1.25vw,19px)}
+.fn-note .disc{border-left:0;border-top:1px solid rgba(0,0,0,.25);border-bottom:1px solid rgba(0,0,0,.25);background:none;padding:16px 4px;font-size:15px}
+
+/* personal page (/projects) */
+.ps{background:#fff;color:#0a0a0b;overflow:hidden}
+.ps-hero{position:relative;min-height:84svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:110px var(--gut) 40px;gap:clamp(14px,2vw,26px)}
+.ps-hero h1{font:400 clamp(64px,15vw,260px)/.9 "Sveningsson","Instrument",sans-serif;letter-spacing:0;position:relative;z-index:2}
+.ps-hero p{font:400 clamp(15px,1.3vw,19px)/1.4 "Sveningsson","Instrument",sans-serif;max-width:420px;position:relative;z-index:2}
+.ps-mq{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);overflow:hidden;opacity:.09;z-index:1}
+.ps-mq .t{display:flex;width:max-content;white-space:nowrap;font:400 clamp(90px,16vw,260px)/1 "Sveningsson","Instrument",sans-serif;animation:psMq 60s linear infinite}
+.ps-mq em,.ps-mq span{font-style:normal;display:inline-flex;align-items:center;gap:.4em;padding-right:.4em}
+.ps-mq i{font-style:normal;font-size:.4em}
+@keyframes psMq{to{transform:translateX(-50%)}}
+.ps-top{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--gut);padding:0 var(--gut);margin-bottom:clamp(22px,3vw,44px)}
+.ps-top h2{font:400 clamp(56px,12vw,200px)/.84 "Anton","Instrument",sans-serif;letter-spacing:-.02em;text-transform:uppercase;margin-left:-.8vw}
+.ps-top sup{font-size:.22em;vertical-align:top;line-height:1;margin-left:.2em}
+.ps-top p{max-width:300px;font:700 10.5px/1.35 "Instrument",sans-serif;text-transform:uppercase;padding-top:.6em}
+.ps-as{padding:clamp(40px,6vw,90px) 0 clamp(70px,10vw,150px)}
+.ps-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0 var(--gut);border-top:1px solid #9a9a9a}
+.ps-card{display:flex;flex-direction:column;padding:0 clamp(8px,1.1vw,18px) 1.6vw;border-right:1px solid #d3d3d3}
+.ps-card:last-child{border-right:0}
+.ps-cv{position:relative;aspect-ratio:4/5;margin:clamp(12px,1.6vw,24px) 0 clamp(10px,1.2vw,18px);background:#141414;overflow:hidden}
+.ps-cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15);transform:scale(1.04);transition:filter .8s var(--ease),transform 1.4s var(--ease)}
+.ps-card:hover .ps-cv img{filter:none;transform:scale(1.1) rotate(-.8deg)}
+.ps-card label{font:400 9px/1.2 "Plex",monospace;color:#555;margin:.7vw 0 .25vw}
+.ps-card .f{border:1px solid #8a8a8a;min-height:clamp(28px,2.6vw,40px);padding:4px 10px;font:400 clamp(17px,1.7vw,26px)/1.2 "Hand","Instrument",cursive;display:flex;align-items:center}
+.ps-card .f.r{color:var(--red)}
+.ps-card .mk{margin-top:auto;padding-top:1.4vw;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:11px;letter-spacing:.04em}
+.ps-card .mk img{width:18px}
+.ps-mvh{display:flex;justify-content:space-between;align-items:baseline;padding:0 var(--gut);border-top:1px solid #0a0a0b;padding-top:14px;margin-bottom:clamp(30px,5vw,80px)}
+.ps-mvh h2{font:400 clamp(30px,4.4vw,70px)/1 "Sveningsson","Instrument",sans-serif}
+.mv{position:relative;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr);gap:var(--gut);align-items:center;padding:0 var(--gut);margin-bottom:clamp(70px,10vw,160px);min-height:70svh}
+.mv.flip{grid-template-columns:minmax(0,1.6fr) minmax(0,.7fr)}.mv.flip .mv-t{order:2;text-align:right;align-items:flex-end}
+.mv-t{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
+.mv-t h3{font:400 clamp(36px,5vw,84px)/.95 "Sveningsson","Instrument",sans-serif;letter-spacing:0}
+.mv-g{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1.2vw,18px);align-items:start}
+.mv-g figure{overflow:hidden;background:#111}
+.mv-g img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease),filter .8s var(--ease);filter:grayscale(.5) contrast(1.05);animation:kb 16s ease-in-out infinite alternate}
+.mv-g figure:hover img{filter:none;transform:scale(1.07)}
+.mv-g .k1{grid-column:1/4;aspect-ratio:3/4}
+.mv-g .k2{grid-column:4/7;aspect-ratio:16/10;margin-top:12%}
+.mv-g .k3{grid-column:3/6;aspect-ratio:4/5;margin-top:-10%}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.cr{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.cr.in{clip-path:inset(0 0 0 0)}
+.mv-bg{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);overflow:hidden;opacity:.06;z-index:1;pointer-events:none}
+.mv-bg .t{display:flex;width:max-content;white-space:nowrap;font:400 clamp(120px,22vw,360px)/1 "Sveningsson","Instrument",sans-serif;animation:psMq 50s linear infinite}
+.mv:nth-of-type(even) .mv-bg .t{animation-direction:reverse}
+.mv-bg span{padding-right:.5em}
+@media(max-width:900px){
+  .ps-row{grid-template-columns:1fr 1fr}.ps-card:nth-child(2){border-right:0}.ps-card:nth-child(n+3){border-top:1px solid #d3d3d3}.ps-card .f{font-size:17px}
+  .ps-top{flex-direction:column}
+  .mv,.mv.flip{grid-template-columns:1fr;min-height:0}.mv.flip .mv-t{order:0;text-align:left;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){.cr{clip-path:none}.mv-g img{animation:none}}
+@media(max-width:900px){
+  .hero-m .hm-links a{position:static;display:block;height:auto;overflow:visible;border-bottom:1px solid transparent;place-items:unset}
+}

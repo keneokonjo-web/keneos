@@ -1,15 +1,12 @@
 import Footer from '../_c/Footer';
-import ProjectsBody from '../_c/ProjectsBody';
-import ProjectsHero from '../_c/ProjectsHero';
-import { heroProjects } from '@/content/site';
+import Personal from '../_c/Personal';
 
-export const metadata = { title: 'Projects' };
+export const metadata = { title: 'Personal' };
 
 export default function Projects() {
   return (
     <div className="white">
-      <ProjectsHero images={heroProjects} />
-      <ProjectsBody />
+      <Personal />
       <Footer />
     </div>
   );
