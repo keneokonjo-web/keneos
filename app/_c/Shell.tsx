@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { brand, pages } from '@/content/site';
 
 const left = [{ href: '/visuals', label: 'Visuals' }, { href: '/field-notes', label: 'Field Notes' }];
-const right = [{ href: '/character', label: 'Clothing' }, { href: '/projects', label: 'Projects' }];
+const right = [{ href: '/work', label: 'Work' }, { href: '/projects', label: 'Projects' }, { href: '/designedbykjo', label: 'DesignedByKJO' }];
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -45,6 +45,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     const root = document.documentElement;
     const home = path === '/';
     root.classList.toggle('home', home);
+    root.classList.toggle('lock', home || path.startsWith('/work/'));
     const upd = () => {
       const y = home && window.innerWidth > 900 ? Math.max(0, window.innerHeight / 2 - 27) : 0;
       root.style.setProperty('--hy', y + 'px');

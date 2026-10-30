@@ -64,7 +64,7 @@ export default function Visuals() {
         </div>
       </section>
       <Collage />
-      <Footer light />
+      <Footer />
     </div>
   );
 }

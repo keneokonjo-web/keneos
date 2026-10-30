@@ -25,7 +25,7 @@ export default async function Trip({ params }: { params: Promise<{ slug: string 
             : <div key={i} className="si g rv"><span className="ghost">Photograph to be added</span></div>)}
         </div>
       </section>
-      <Footer light />
+      <Footer />
     </div>
   );
 }

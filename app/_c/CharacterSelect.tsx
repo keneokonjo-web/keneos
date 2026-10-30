@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 const items = [
-  { n: '001', name: 'Character 001', img: '/img/figure.png', locked: false },
-  { n: '002', name: 'Character 002', img: '/img/figure.png', locked: true },
-  { n: '003', name: 'Character 003', img: '/img/figure.png', locked: true },
+  { n: '001', name: 'Character 001', img: '/img/char-1.png' },
+  { n: '002', name: 'Character 002', img: '/img/char-2.png' },
+  { n: '003', name: 'Character 003', img: '/img/char-3.png' },
 ];
 
 export default function CharacterSelect() {
@@ -31,13 +31,10 @@ export default function CharacterSelect() {
       <div className="stage">
         {items.map((c, idx) => {
           const d = off(idx);
-          const x = d * 30; // vw
-          const scale = d === 0 ? 1 : 0.55;
           return (
-            <div key={c.n} className={'card' + (c.locked ? ' lock' : '')} aria-hidden={d !== 0}
-              style={{ transform: `translate(calc(-50% + ${x}vw),-50%) scale(${scale})`, opacity: d === 0 ? 1 : 0.3 }}>
-              <img src={c.img} alt={c.locked ? '' : 'Watercolour illustration of the first Character'} />
-              {c.locked && d === 0 && <span className="tag">Locked, image to come</span>}
+            <div key={c.n} className="card" aria-hidden={d !== 0}
+              style={{ transform: `translate(calc(-50% + ${d * 30}vw),-50%) scale(${d === 0 ? 1 : 0.55})`, opacity: d === 0 ? 1 : 0.3 }}>
+              <img src={c.img} alt={d === 0 ? `Watercolour illustration, ${c.name}` : ''} />
             </div>
           );
         })}

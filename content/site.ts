@@ -23,10 +23,9 @@ export type PageEntry = {
 export const pages: PageEntry[] = [
   { n: '01', slug: 'visuals', title: 'Visuals', sub: 'Photography and film', img: 'cup', pos: '50% 60%' },
   { n: '02', slug: 'field-notes', title: 'Field Notes', sub: 'The journal', img: 'wall', pos: '50% 40%' },
-  { n: '03', slug: 'wardrobe', title: 'Wardrobe', sub: 'Personal style, indexed', img: 'tag', pos: '50% 40%' },
-  { n: '04', slug: 'character', title: 'Character', sub: 'The clothing line', img: 'shutters', pos: '50% 30%' },
-  { n: '05', slug: 'work', title: 'Work', sub: 'Professional', img: 'doors', pos: '50% 35%' },
-  { n: '06', slug: 'projects', title: 'Projects', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
+  { n: '03', slug: 'work', title: 'Work', sub: 'Professional', img: 'doors', pos: '50% 35%' },
+  { n: '04', slug: 'projects', title: 'Projects', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
+  { n: '05', slug: 'designedbykjo', title: 'DesignedByKJO', sub: 'The clothing line', img: 'shutters', pos: '50% 30%' },
 ];
 
 export const heroImages = ['cup', 'shutters', 'tag', 'wall', 'doors', 'stencil'];
@@ -99,7 +98,7 @@ export const notes = [
 
 // ---------- Home hero ----------
 // Photos that move through the hero. Add file names from /public/img (without .jpg).
-export const heroPhotos = ['p-0680', 'p-0681', 'p-0682', 'p-0683', 'p-0685', 'p-0688', 'p-0689'];
+export const heroPhotos = ['p-0680', 'p-0685', 'p-0697', 'p-0699', 'p-0700'];
 
 // ---------- Visuals: trips ----------
 // Each trip links to its own gallery page at /visuals/<slug>. Add file names to `images` when you have them.
@@ -118,35 +117,24 @@ export const blocks = [
   { n: '4.1–4.4', title: 'TITLE TO BE ADDED', kind: 'Photography', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
 ];
 
-// ---------- Wardrobe ----------
-export const looks = [
-  { n: '01', name: 'Look 01', note: 'Pinstripe, oversized, headwear low.' },
-  { n: '02', name: 'Look 02', note: 'Description to be added.' },
-  { n: '03', name: 'Look 03', note: 'Description to be added.' },
-  { n: '04', name: 'Look 04', note: 'Description to be added.' },
-  { n: '05', name: 'Look 05', note: 'Description to be added.' },
-  { n: '06', name: 'Look 06', note: 'Description to be added.' },
-];
-
-// ---------- Character (clothing line) ----------
-export const specimens = [
-  { n: '001', name: 'Jacket 001', fit: 'Oversized', fabric: 'To be added', colour: 'Black, pinstripe', sizes: 'To be added', status: 'Not yet released' },
-  { n: '002', name: 'Trouser 001', fit: 'Wide', fabric: 'To be added', colour: 'Black, pinstripe', sizes: 'To be added', status: 'Not yet released' },
-  { n: '003', name: 'Headwear 001', fit: 'Low', fabric: 'To be added', colour: 'Silver', sizes: 'One size', status: 'Not yet released' },
-];
-
-// ---------- Work and Projects ----------
-export const work = [
-  { n: '01', title: 'Project title', role: 'Role', year: '2026' },
-  { n: '02', title: 'Project title', role: 'Role', year: '2026' },
-  { n: '03', title: 'Project title', role: 'Role', year: '2026' },
-  { n: '04', title: 'Project title', role: 'Role', year: '2026' },
-];
-
-export const projects = [
-  { n: '001', title: 'Personal project', note: 'One line on what it is.', year: '2026' },
-  { n: '002', title: 'Personal project', note: 'One line on what it is.', year: '2026' },
-  { n: '003', title: 'Personal project', note: 'One line on what it is.', year: '2026' },
+// ---------- Work index ----------
+// K-001 is the parent group and shows in red. Edit names, links and text here.
+export type Company = {
+  code: string; slug: string; name: string; red?: boolean;
+  url?: string; host?: string; preview?: string; internal?: string;
+  meta: string[]; text: string[];
+};
+export const companies: Company[] = [
+  { code: 'K-001', slug: 'waykon-group', name: 'WayKON Group', red: true, url: 'https://waykongroup.com', host: 'waykongroup.com', preview: 'site-waykon',
+    meta: ['Index: K-001', 'Type: Parent group', 'Site: waykongroup.com'],
+    text: ['Description to be added. A short paragraph about the group, in your own words.', 'A second short paragraph goes here.'] },
+  { code: 'K-002', slug: 'fieldwork', name: 'Fieldwork', url: 'https://fieldwork.estate', host: 'fieldwork.estate', preview: 'site-fieldwork',
+    meta: ['Index: K-002', 'Type: Company', 'Site: fieldwork.estate'],
+    text: ['Practical technology for estate agencies, brokerages and property developers.', 'Description to be added. A second short paragraph goes here.'] },
+  { code: 'K-003', slug: '42-events', name: '42 Events', url: 'https://fortytwo-alpha-eta.vercel.app', host: 'fortytwo-alpha-eta.vercel.app', preview: '',
+    meta: ['Index: K-003', 'Type: Company', 'Site: fortytwo-alpha-eta.vercel.app'],
+    text: ['Description to be added. A short paragraph about 42 Events, in your own words.', 'A second short paragraph goes here.'] },
+  { code: 'K-004', slug: 'designedbykjo', name: 'DesignedByKJO', internal: '/designedbykjo', meta: [], text: [] },
 ];
 
 // ---------- Parked copy (not shown right now) ----------

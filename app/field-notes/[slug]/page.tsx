@@ -22,7 +22,7 @@ export default async function Entry({ params }: { params: Promise<{ slug: string
           <Link href="/field-notes" className="back">‹ All field notes</Link>
         </div>
       </article>
-      <Footer />
+      <Footer dark />
     </>
   );
 }
