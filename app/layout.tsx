@@ -3,9 +3,11 @@ import './globals.css';
 import Shell from './_c/Shell';
 
 export const metadata: Metadata = {
-  title: { default: 'KJO · Original by nature', template: '%s · KJO' },
-  description: 'Photography, film, field notes and the Character clothing line. Direction and distinction.',
-  icons: { icon: '/mark/cross-fleur-white.png' },
+  title: { default: 'Kene Okonjo', template: '%s · Kene Okonjo' },
+  description: 'Kene Okonjo. Photography, film, field notes and the Character clothing line.',
+  applicationName: 'Kene Okonjo',
+  openGraph: { title: 'Kene Okonjo', siteName: 'Kene Okonjo', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Kene Okonjo' },
 };
 export const viewport: Viewport = { themeColor: '#0a0a0b' };
 
