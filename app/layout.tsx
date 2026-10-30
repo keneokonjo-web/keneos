@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('kjo-seen'))document.documentElement.classList.add('seen')}catch(e){}" }} />
+        <script dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('kjo-seen'))document.documentElement.classList.add('seen','ready')}catch(e){}" }} />
       </head>
       <body>
         <Shell>{children}</Shell>

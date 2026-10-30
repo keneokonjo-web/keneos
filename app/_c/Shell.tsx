@@ -1,35 +1,52 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { brand, pages } from '@/content/site';
 
+type Pos = { left: number; top: number };
+
 export default function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const [count, setCount] = useState(0);
-  const [out, setOut] = useState(false);
+  const [say, setSay] = useState(false);
+  const [pts, setPts] = useState(false);
+  const [slide, setSlide] = useState(false);
+  const [done, setDone] = useState(false);
+  const [pos, setPos] = useState<{ a: Pos; b: Pos; target: { a: Pos; b: Pos } } | null>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+  const timers = useRef<number[]>([]);
 
-  // loader: counts to 100 once per session, then lifts
+  const finish = () => {
+    timers.current.forEach((t) => clearTimeout(t));
+    const root = document.documentElement;
+    root.classList.add('ready');
+    try { sessionStorage.setItem('kjo-seen', '1'); } catch {}
+    document.body.style.overflow = '';
+    setDone(true);
+    setTimeout(() => root.classList.add('seen'), 1300);
+  };
+
+  // loader: black, line of text fades in and out, then two marks slide up into the header
   useEffect(() => {
     const root = document.documentElement;
-    if (root.classList.contains('seen')) return;
+    if (root.classList.contains('seen')) { setDone(true); return; }
     document.body.style.overflow = 'hidden';
-    const start = performance.now();
-    const dur = 2400;
-    let raf = 0;
-    const tick = (t: number) => {
-      const p = Math.min(1, (t - start) / dur);
-      setCount(Math.round(100 * (1 - Math.pow(1 - p, 2.2))));
-      if (p < 1) raf = requestAnimationFrame(tick);
-      else {
-        setOut(true);
-        document.body.style.overflow = '';
-        setTimeout(() => { try { sessionStorage.setItem('kjo-seen', '1'); } catch {} root.classList.add('seen'); }, 1200);
-      }
+    const measure = () => {
+      const l = logoRef.current?.getBoundingClientRect();
+      const m = menuRef.current?.getBoundingClientRect();
+      if (!l || !m) return null;
+      const mid = window.innerHeight / 2;
+      return { a: { left: l.left, top: mid }, b: { left: m.left, top: mid }, target: { a: { left: l.left, top: l.top }, b: { left: m.left, top: m.top } } };
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const at = (ms: number, fn: () => void) => timers.current.push(window.setTimeout(fn, ms));
+    at(600, () => setSay(true));        // text fades in
+    at(2800, () => setSay(false));      // and out
+    at(3900, () => { setPos(measure()); setPts(true); }); // two marks appear, left and right
+    at(4900, () => setSlide(true));     // slide to the top, background lifts
+    at(6200, finish);
+    return () => timers.current.forEach((t) => clearTimeout(t));
   }, []);
 
   // close menu on navigation / Escape
@@ -39,7 +56,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
   }, []);
-  useEffect(() => { document.body.style.overflow = open ? 'hidden' : ''; }, [open]);
+  useEffect(() => { if (done) document.body.style.overflow = open ? 'hidden' : ''; }, [open, done]);
 
   // scroll reveals
   useEffect(() => {
@@ -53,21 +70,30 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className={'loader' + (out ? ' out' : '')} aria-hidden="true">
-        <div className="wm"><div className="wmt">DesignedByKJO</div></div>
-        <div className="count">{String(count).padStart(3, '0')}</div>
-        <div className="lab">Original by nature</div>
-        <div className="bar" style={{ width: count + '%' }} />
+      <div className={'loader' + (done ? ' fin' : ' on') + (slide ? ' slide' : '')} aria-hidden="true">
+        <div className="bgc" />
+        <div className={'say' + (say ? ' show' : '')}>Direction and distinction</div>
+        {pos && (
+          <>
+            <div className={'pt' + (pts ? ' show' : '')} style={{ left: pos.a.left, top: slide ? pos.target.a.top : pos.a.top, transform: slide ? 'none' : 'translateY(-50%)' }}>
+              <img src="/mark/cross-fleur-white.png" alt="" /><span className="logo">{brand.name}</span>
+            </div>
+            <div className={'pt ptm' + (pts ? ' show' : '')} style={{ left: pos.b.left, top: slide ? pos.target.b.top : pos.b.top, transform: slide ? 'none' : 'translateY(-50%)' }}>
+              <span>Menu</span><i />
+            </div>
+          </>
+        )}
+        <button className="skip" onClick={finish}>Skip</button>
       </div>
 
       <header className="hdr">
         <div className="l">
-          <Link href="/" className="logo" aria-label="KJO home"><img src="/mark/cross-fleur-white.png" alt="" /><span>{brand.name}</span></Link>
+          <Link ref={logoRef} href="/" className="logo" aria-label="KJO home"><img src="/mark/cross-fleur-white.png" alt="" /><span>{brand.name}</span></Link>
         </div>
         <div className="c">{brand.tagline}</div>
         <div className="x"><img src="/mark/cross-fleur-white.png" alt="" /></div>
         <div className="r">
-          <button className="menubtn" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="menu">
+          <button ref={menuRef} className="menubtn" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="menu">
             <span>{open ? 'Close' : 'Menu'}</span><i />
           </button>
         </div>

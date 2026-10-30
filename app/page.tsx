@@ -11,14 +11,13 @@ export default function Home() {
         <div className="bg">
           {heroImages.map((n, i) => (<img key={n} src={`/img/${n}.jpg`} alt="" style={{ animationDelay: `${i * 6}s` }} />))}
         </div>
-        <div className="tag">{phrases[0]}.</div>
         <div className="meta mono">Index<br />01 — 06</div>
         <nav className="idxrow" aria-label="Pages">
           {pages.map((p) => (
             <Link key={p.slug} href={'/' + p.slug}><span className="n">{p.n}</span><span className="t">{p.title}</span><span className="s">{p.sub}</span></Link>
           ))}
         </nav>
-        <div className="word"><div className="wmt" aria-label="DesignedByKJO">DesignedByKJO</div></div>
+        <div className="word"><img src="/mark/designedbykjo-hd-white.png" alt="DesignedByKJO" /></div>
       </section>
 
       {/* Mobile hero: stacked full-bleed panels, one per page */}
@@ -26,7 +25,7 @@ export default function Home() {
         {pages.map((p, i) => (
           <Link key={p.slug} href={'/' + p.slug} className={i === 0 ? 'first' : ''}>
             <img src={`/img/${p.img}.jpg`} alt="" style={{ objectPosition: p.pos }} />
-            {i === 0 && (<><div className="wm"><div className="wmt" aria-label="DesignedByKJO">DesignedByKJO</div></div><div className="tg">{phrases[0]}.</div></>)}
+            {i === 0 && (<><div className="wm"><img src="/mark/designedbykjo-hd-white.png" alt="DesignedByKJO" /></div></>)}
             <span>{p.title}</span>
           </Link>
         ))}

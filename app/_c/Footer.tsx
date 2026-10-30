@@ -11,7 +11,7 @@ export default function Footer() {
         </div>
         <div className="mono">{brand.email ? <a href={'mailto:' + brand.email}>{brand.email}</a> : 'Contact: to be added'}</div>
       </div>
-      <div className="big2"><div className="wmt" aria-label="DesignedByKJO">DesignedByKJO</div></div>
+      <div className="big2"><img src="/mark/designedbykjo-hd-white.png" alt="DesignedByKJO" /></div>
       <div className="bot mono"><span>© {new Date().getFullYear()} KJO</span><span>Index · Archive · Signature</span></div>
     </footer>
   );
