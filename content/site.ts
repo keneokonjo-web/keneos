@@ -104,3 +104,9 @@ export const projects = [
   { n: '002', title: 'Personal project', note: 'One line on what it is.', year: '2026' },
   { n: '003', title: 'Personal project', note: 'One line on what it is.', year: '2026' },
 ];
+
+// ---------- Parked copy (not shown right now) ----------
+// Hero paragraph, kept for later:
+export const parked = {
+  heroParagraph: 'A personal collection, on my own terms. Photography and film, field notes, a wardrobe and a clothing line named Character. Original by nature.',
+};

@@ -4,18 +4,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { brand, pages } from '@/content/site';
 
-type Pos = { left: number; top: number };
+const left = [{ href: '/visuals', label: 'Visuals' }, { href: '/field-notes', label: 'Field Notes' }];
+const right = [{ href: '/character', label: 'Clothing' }, { href: '/projects', label: 'Projects' }];
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
-  const [say, setSay] = useState(false);
-  const [pts, setPts] = useState(false);
-  const [slide, setSlide] = useState(false);
+  const [ar, setAr] = useState(false);
+  const [en, setEn] = useState(false);
+  const [out, setOut] = useState(false);
   const [done, setDone] = useState(false);
-  const [pos, setPos] = useState<{ a: Pos; b: Pos; target: { a: Pos; b: Pos } } | null>(null);
-  const logoRef = useRef<HTMLAnchorElement>(null);
-  const menuRef = useRef<HTMLButtonElement>(null);
   const timers = useRef<number[]>([]);
 
   const finish = () => {
@@ -24,32 +22,43 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     root.classList.add('ready');
     try { sessionStorage.setItem('kjo-seen', '1'); } catch {}
     document.body.style.overflow = '';
-    setDone(true);
-    setTimeout(() => root.classList.add('seen'), 1300);
+    setAr(false); setEn(false); setOut(true); setDone(true);
+    setTimeout(() => root.classList.add('seen'), 1400);
   };
 
-  // loader: black, line of text fades in and out, then two marks slide up into the header
+  // intro: black, Arabic fades in, English fades in beneath, both fade out, header fades in where it will live
   useEffect(() => {
     const root = document.documentElement;
     if (root.classList.contains('seen')) { setDone(true); return; }
     document.body.style.overflow = 'hidden';
-    const measure = () => {
-      const l = logoRef.current?.getBoundingClientRect();
-      const m = menuRef.current?.getBoundingClientRect();
-      if (!l || !m) return null;
-      const mid = window.innerHeight / 2;
-      return { a: { left: l.left, top: mid }, b: { left: m.left, top: mid }, target: { a: { left: l.left, top: l.top }, b: { left: m.left, top: m.top } } };
-    };
     const at = (ms: number, fn: () => void) => timers.current.push(window.setTimeout(fn, ms));
-    at(600, () => setSay(true));        // text fades in
-    at(2800, () => setSay(false));      // and out
-    at(3900, () => { setPos(measure()); setPts(true); }); // two marks appear, left and right
-    at(4900, () => setSlide(true));     // slide to the top, background lifts
-    at(6200, finish);
+    at(700, () => setAr(true));
+    at(2400, () => setEn(true));
+    at(5200, () => { setAr(false); setEn(false); });
+    at(6300, () => { root.classList.add('ready'); setOut(true); });
+    at(7700, finish);
     return () => timers.current.forEach((t) => clearTimeout(t));
   }, []);
 
-  // close menu on navigation / Escape
+  // header sits at mid-screen on the home hero and slides to the top bar as you scroll
+  useEffect(() => {
+    const root = document.documentElement;
+    const home = path === '/';
+    root.classList.toggle('home', home);
+    let raf = 0;
+    const upd = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const y = home && window.innerWidth > 900 ? Math.max(0, window.innerHeight / 2 - 27 - window.scrollY) : 0;
+        root.style.setProperty('--hy', y + 'px');
+      });
+    };
+    upd();
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    return () => { window.removeEventListener('scroll', upd); window.removeEventListener('resize', upd); cancelAnimationFrame(raf); };
+  }, [path]);
+
   useEffect(() => { setOpen(false); }, [path]);
   useEffect(() => {
     const k = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
@@ -58,7 +67,6 @@ export default function Shell({ children }: { children: React.ReactNode }) {
   }, []);
   useEffect(() => { if (done) document.body.style.overflow = open ? 'hidden' : ''; }, [open, done]);
 
-  // scroll reveals
   useEffect(() => {
     window.scrollTo(0, 0);
     const els = Array.from(document.querySelectorAll('.rv,.mask'));
@@ -68,38 +76,32 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     return () => io.disconnect();
   }, [path]);
 
+  const group = (items: { href: string; label: string }[]) =>
+    items.map((it, i) => (<span key={it.href}><Link href={it.href} className={path.startsWith(it.href) ? 'on' : ''}>{it.label}</Link>{i < items.length - 1 ? ', ' : ''}</span>));
+
   return (
     <>
-      <div className={'loader' + (done ? ' fin' : ' on') + (slide ? ' slide' : '')} aria-hidden="true">
+      <div className={'loader' + (done ? ' fin' : ' on') + (out ? ' out' : '')} aria-hidden="true">
         <div className="bgc" />
-        <div className={'say' + (say ? ' show' : '')}>Direction and distinction</div>
-        {pos && (
-          <>
-            <div className={'pt' + (pts ? ' show' : '')} style={{ left: pos.a.left, top: slide ? pos.target.a.top : pos.a.top, transform: slide ? 'none' : 'translateY(-50%)' }}>
-              <img src="/mark/cross-fleur-white.png" alt="" /><span className="logo">{brand.name}</span>
-            </div>
-            <div className={'pt ptm' + (pts ? ' show' : '')} style={{ left: pos.b.left, top: slide ? pos.target.b.top : pos.b.top, transform: slide ? 'none' : 'translateY(-50%)' }}>
-              <span>Menu</span><i />
-            </div>
-          </>
-        )}
+        <div className="q">
+          <div className={'ar' + (ar ? ' show' : '')} lang="ar">لا يمكنك أن تعلّم الأعمى كيف يرى</div>
+          <div className={'en' + (en ? ' show' : '')}>You <i>can’t</i> teach a blind man to see.</div>
+        </div>
         <button className="skip" onClick={finish}>Skip</button>
       </div>
 
       <header className="hdr">
-        <div className="l">
-          <Link ref={logoRef} href="/" className="logo" aria-label="KJO home"><img src="/mark/cross-fleur-white.png" alt="" /><span>{brand.name}</span></Link>
-        </div>
-        <div className="c">{brand.tagline}</div>
-        <div className="x"><img src="/mark/cross-fleur-white.png" alt="" /></div>
+        <Link href="/" className="logo" aria-label="DesignedByKJO, home"><img src="/mark/designedbykjo-hd-white.png" alt="DesignedByKJO" /></Link>
+        <nav className="g g1" aria-label="Pages">{group(left)}</nav>
+        <nav className="g g2" aria-label="Pages">{group(right)}</nav>
         <div className="r">
-          <button ref={menuRef} className="menubtn" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="menu">
+          <button className="menubtn" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="menu">
             <span>{open ? 'Close' : 'Menu'}</span><i />
           </button>
         </div>
       </header>
 
-      <nav id="menu" className={'menu' + (open ? ' open' : '')} aria-label="Contents" aria-hidden={!open}>
+      <nav id="menu" className={'menu' + (open ? ' open' : '')} aria-label="Contents">
         <div className="in">
           <h2>Contents</h2>
           <div className="rows">
