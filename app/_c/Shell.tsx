@@ -40,24 +40,20 @@ export default function Shell({ children }: { children: React.ReactNode }) {
     return () => timers.current.forEach((t) => clearTimeout(t));
   }, []);
 
-  // header sits at mid-screen on the home hero and slides to the top bar as you scroll
+  // header sits at mid-screen on the home hero (which does not scroll) and at the top everywhere else
   useEffect(() => {
     const root = document.documentElement;
     const home = path === '/';
     root.classList.toggle('home', home);
-    let raf = 0;
     const upd = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const y = home && window.innerWidth > 900 ? Math.max(0, window.innerHeight / 2 - 27 - window.scrollY) : 0;
-        root.style.setProperty('--hy', y + 'px');
-      });
+      const y = home && window.innerWidth > 900 ? Math.max(0, window.innerHeight / 2 - 27) : 0;
+      root.style.setProperty('--hy', y + 'px');
     };
     upd();
-    window.addEventListener('scroll', upd, { passive: true });
     window.addEventListener('resize', upd);
-    return () => { window.removeEventListener('scroll', upd); window.removeEventListener('resize', upd); cancelAnimationFrame(raf); };
+    return () => window.removeEventListener('resize', upd);
   }, [path]);
+  useEffect(() => { document.documentElement.classList.toggle('menu-open', open); }, [open]);
 
   useEffect(() => { setOpen(false); }, [path]);
   useEffect(() => {

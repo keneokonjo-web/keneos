@@ -68,10 +68,46 @@ export const favourites = {
 };
 
 // ---------- Field Notes ----------
+// Template entries. Replace the text. One string per paragraph in `body`.
 export const notes = [
-  { slug: 'note-001', n: '001', date: '2026', title: 'Field note one', excerpt: 'First entry. Replace with your own writing.', body: ['Write the entry here. One paragraph per line in content/site.ts.'] },
-  { slug: 'note-002', n: '002', date: '2026', title: 'Field note two', excerpt: 'Second entry. Short, personal, unpolished.', body: ['Write the entry here.'] },
-  { slug: 'note-003', n: '003', date: '2026', title: 'Field note three', excerpt: 'Third entry.', body: ['Write the entry here.'] },
+  {
+    slug: 'note-001', n: '001', topic: 'Field Notes / Topic', title: 'Title of the first note',
+    sub: 'A one or two line description of what this note is about, written in your own voice.',
+    date: '30 October 2026', read: '2 minute read',
+    disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
+    body: [
+      'This is template text for the body of the note. It runs as a straight set of paragraphs with no subheadings, in your own words, about whatever the topic is.',
+      'A second paragraph goes here. Keep the lines short, keep the thought honest, and let it run as long as it needs to.',
+      'A third paragraph closes the note.',
+    ],
+  },
+  {
+    slug: 'note-002', n: '002', topic: 'Field Notes / Topic', title: 'Title of the second note',
+    sub: 'A one or two line description goes here.',
+    date: '30 October 2026', read: '2 minute read',
+    disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
+    body: ['Template text for the body of the note.', 'A second paragraph goes here.'],
+  },
+  {
+    slug: 'note-003', n: '003', topic: 'Field Notes / Topic', title: 'Title of the third note',
+    sub: 'A one or two line description goes here.',
+    date: '30 October 2026', read: '1 minute read',
+    disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
+    body: ['Template text for the body of the note.'],
+  },
+];
+
+// ---------- Home hero ----------
+// Photos that move through the hero. Add file names from /public/img (without .jpg).
+export const heroPhotos = ['me-1317'];
+
+// ---------- Visuals: trips ----------
+// Each trip links to its own gallery page at /visuals/<slug>. Add file names to `images` when you have them.
+export const trips = [
+  { slug: 'egypt', n: '1.1–1.4', title: 'EGYPT', kind: 'Photography', text: 'Photographs from the trip to Egypt. Description to be added.', images: [] as string[] },
+  { slug: 'vietnam', n: '2.1–2.4', title: 'VIETNAM', kind: 'Photography', text: 'Photographs from the trip to Vietnam. Description to be added.', images: [] as string[] },
+  { slug: 'nigeria', n: '3.1–3.4', title: 'NIGERIA', kind: 'Photography', text: 'Photographs from the trip to Nigeria. Description to be added.', images: [] as string[] },
+  { slug: 'uae', n: '4.1–4.4', title: 'UNITED ARAB EMIRATES', kind: 'Photography', text: 'Photographs from the trip to the UAE. Description to be added.', images: [] as string[] },
 ];
 
 // ---------- Wardrobe ----------
