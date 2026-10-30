@@ -70,7 +70,7 @@ export const favourites = {
 // Template entries. Replace the text. One string per paragraph in `body`.
 export const notes = [
   {
-    slug: 'note-001', n: '001', topic: 'Field Notes / Topic', title: 'Title of the first note',
+    slug: 'note-001', n: '001', topic: 'Field Notes / Topic', title: 'My take on Films',
     sub: 'A one or two line description of what this note is about, written in your own voice.',
     date: '30 October 2026', read: '2 minute read',
     disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
@@ -81,14 +81,14 @@ export const notes = [
     ],
   },
   {
-    slug: 'note-002', n: '002', topic: 'Field Notes / Topic', title: 'Title of the second note',
+    slug: 'note-002', n: '002', topic: 'Field Notes / Topic', title: 'Importance of Honesty',
     sub: 'A one or two line description goes here.',
     date: '30 October 2026', read: '2 minute read',
     disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
     body: ['Template text for the body of the note.', 'A second paragraph goes here.'],
   },
   {
-    slug: 'note-003', n: '003', topic: 'Field Notes / Topic', title: 'Title of the third note',
+    slug: 'note-003', n: '003', topic: 'Field Notes / Topic', title: 'Beauty of Music: In Depth',
     sub: 'A one or two line description goes here.',
     date: '30 October 2026', read: '1 minute read',
     disclaimer: 'Written by Kene. Template text: replace this with your own disclaimer.',
@@ -148,13 +148,13 @@ export const parked = {
 // ---------- Clothing: product viewing ----------
 // Names and prices are placeholders. Replace the text; images are crops of the watercolour characters.
 export const products = [
-  { img: 'prod-jacket', name: 'Pinstripe jacket', price: '$000' },
-  { img: 'prod-longsleeve', name: 'White long sleeve', price: '$000' },
-  { img: 'prod-trouser', name: 'Wide pinstripe trouser', price: '$000' },
-  { img: 'prod-camo', name: 'Camo trouser', price: '$000' },
-  { img: 'prod-tee', name: 'Navy tee', price: '$000' },
-  { img: 'prod-grey', name: 'Grey wide trouser', price: '$000' },
-  { img: 'prod-beanie', name: 'Silver beanie', price: '$000' },
+  { img: 'prod-jacket', name: 'Pinstripe jacket', price: '$185' },
+  { img: 'prod-longsleeve', name: 'White long sleeve', price: '$95' },
+  { img: 'prod-trouser', name: 'Wide pinstripe trouser', price: '$140' },
+  { img: 'prod-camo', name: 'Camo trouser', price: '$165' },
+  { img: 'prod-tee', name: 'Navy tee', price: '$55' },
+  { img: 'prod-grey', name: 'Grey wide trouser', price: '$120' },
+  { img: 'prod-beanie', name: 'Silver beanie', price: '$45' },
 ];
 
 // ---------- Projects ----------

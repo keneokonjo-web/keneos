@@ -6,7 +6,7 @@ export const metadata = { title: 'Field Notes' };
 
 const words = ['Field Notes', 'In my own words', 'Original by nature', 'Thoughts'];
 const side = (
-  <div className="t">{Array.from({ length: 5 }).map((_, k) => (<span key={k}>{words.map((w) => (<em key={w}>{w}<i>✦</i></em>))}</span>))}</div>
+  <div className="t">{Array.from({ length: 8 }).map((_, k) => words.map((w) => (<em key={k + w}>{w}<i>✦</i></em>)))}</div>
 );
 
 export default function FieldNotes() {

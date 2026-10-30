@@ -12,7 +12,7 @@ export default function Work() {
           <ul>
             {companies.map((c) => (
               <li key={c.code}>
-                <a href={c.internal ?? c.url} className={c.red ? 'red' : ''}>
+                <a href={c.internal ?? c.url} target="_blank" rel="noopener noreferrer" className={c.red ? 'red' : ''}>
                   <span className="cd">{c.code}</span>
                   <span className="nm">{c.name}</span>
                 </a>

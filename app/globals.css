@@ -728,3 +728,30 @@ html.home,html.home body{overflow:hidden!important;height:100%}
 @media(max-width:900px){
   .hero-m .hm-links a{position:static;display:block;height:auto;overflow:visible;border-bottom:1px solid transparent;place-items:unset}
 }
+
+/* ======== round 4 ======== */
+@media(max-width:900px){
+  .hero-m .hm-links{flex-direction:row;flex-wrap:nowrap;justify-content:center;gap:3.2vw;font-size:3.7vw;white-space:nowrap;padding:0 2vw}
+}
+/* personal: movies first, no page header */
+.ps{padding-top:clamp(90px,9vw,130px)}
+.ps-top h2{font:400 clamp(48px,9vw,150px)/.9 "Sveningsson","Instrument",sans-serif;letter-spacing:0;text-transform:none;margin-left:0}
+.ps-top h2 sup{font-size:.2em}
+.ps-top p{font:400 11px/1.4 "Plex",monospace}
+.ps-as{padding-top:0}
+.ps-cv{aspect-ratio:1/1}
+.ps-cv img{filter:none;object-fit:cover}
+.ps-card:hover .ps-cv img{transform:scale(1.04)}
+.ps-mv{padding-bottom:clamp(40px,6vw,90px)}
+/* film images reveal: clip the image, not the observed figure (a fully clipped element is never "visible") */
+.cr{clip-path:none}.cr.in{clip-path:none}
+.cr img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease),transform 1.6s var(--ease),filter .8s var(--ease)}
+.cr.in img{clip-path:inset(0 0 0 0)}
+@media(prefers-reduced-motion:reduce){.cr img{clip-path:none}}
+/* field notes: one scrolling line each side, compact borderless middle */
+.fn-side .t{display:block;height:max-content;flex-direction:unset}
+.fn-side .t em{display:inline;margin-right:.6em}
+.fn-side .t i{margin-left:.6em;font-size:.5em}
+.fn-col{width:auto;border:0;padding:0;background:none}
+.fn-ul{display:inline-flex;align-items:flex-start;text-align:left;gap:clamp(10px,1.4vw,16px)}
+@media(max-width:700px){.fn-side{opacity:.1}}
