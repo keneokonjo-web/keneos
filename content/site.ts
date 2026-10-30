@@ -99,15 +99,23 @@ export const notes = [
 
 // ---------- Home hero ----------
 // Photos that move through the hero. Add file names from /public/img (without .jpg).
-export const heroPhotos = ['me-1317'];
+export const heroPhotos = ['p-0680', 'p-0681', 'p-0682', 'p-0683', 'p-0685', 'p-0688', 'p-0689'];
 
 // ---------- Visuals: trips ----------
 // Each trip links to its own gallery page at /visuals/<slug>. Add file names to `images` when you have them.
 export const trips = [
-  { slug: 'egypt', n: '1.1–1.4', title: 'EGYPT', kind: 'Photography', text: 'Photographs from the trip to Egypt. Description to be added.', images: [] as string[] },
-  { slug: 'vietnam', n: '2.1–2.4', title: 'VIETNAM', kind: 'Photography', text: 'Photographs from the trip to Vietnam. Description to be added.', images: [] as string[] },
-  { slug: 'nigeria', n: '3.1–3.4', title: 'NIGERIA', kind: 'Photography', text: 'Photographs from the trip to Nigeria. Description to be added.', images: [] as string[] },
-  { slug: 'uae', n: '4.1–4.4', title: 'UNITED ARAB EMIRATES', kind: 'Photography', text: 'Photographs from the trip to the UAE. Description to be added.', images: [] as string[] },
+  { slug: 'egypt', title: 'EGYPT', cover: 'v-camel', text: 'Description to be added.', images: [] as string[] },
+  { slug: 'vietnam', title: 'VIETNAM', cover: 'v-sail', text: 'Description to be added.', images: [] as string[] },
+  { slug: 'nigeria', title: 'NIGERIA', cover: 'p-0681', text: 'Description to be added.', images: [] as string[] },
+  { slug: 'uae', title: 'UNITED ARAB EMIRATES', cover: 'p-0683', text: 'Description to be added.', images: [] as string[] },
+];
+
+// General text blocks that sit in the Visuals grid. Write your own.
+export const blocks = [
+  { n: '1.1–1.4', title: 'TITLE TO BE ADDED', kind: 'Photography, Motion', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
+  { n: '2.1–2.4', title: 'TITLE TO BE ADDED', kind: 'Photography, Motion', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
+  { n: '3.1–3.3', title: 'TITLE TO BE ADDED', kind: 'Photography', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
+  { n: '4.1–4.4', title: 'TITLE TO BE ADDED', kind: 'Photography', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
 ];
 
 // ---------- Wardrobe ----------

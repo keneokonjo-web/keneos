@@ -1,59 +1,70 @@
 import Link from 'next/link';
 import Collage from '../_c/Collage';
 import Footer from '../_c/Footer';
-import { trips } from '@/content/site';
+import { blocks, trips } from '@/content/site';
 
 export const metadata = { title: 'Visuals' };
 
-const t = (i: number) => trips[i];
 function Text({ i, col, row }: { i: number; col: number; row: number }) {
-  const x = t(i);
+  const x = blocks[i];
   return (
-    <Link href={'/visuals/' + x.slug} className="st rv" style={{ gridColumn: col, gridRow: row }}>
+    <div className="st rv" style={{ gridColumn: col, gridRow: row }}>
       <span className="n">{x.n}</span>
       <b>{x.title}</b>
       <span>{x.kind}</span>
       <p>{x.text}</p>
-    </Link>
+    </div>
   );
 }
-function Img({ src, col, row, p, link }: { src?: string; col: number; row: number; p?: boolean; link?: string }) {
-  const inner = src ? <img src={`/img/${src}.jpg`} alt="" loading="lazy" /> : <span className="ghost">Image to be added</span>;
+function Img({ src, col, row, p }: { src?: string; col: number; row: number; p?: boolean }) {
   const st = { gridColumn: col, gridRow: row } as React.CSSProperties;
-  const cls = 'si rv' + (p ? ' p' : '') + (src ? '' : ' g');
-  return link ? <Link href={link} className={cls} style={st} aria-label={`Open the ${link.split("/").pop()} gallery`}>{inner}</Link> : <div className={cls} style={st}>{inner}</div>;
+  return (
+    <div className={'si rv' + (p ? ' p' : '') + (src ? '' : ' g')} style={st}>
+      {src ? <img src={`/img/${src}.jpg`} alt="" loading="lazy" /> : <span className="ghost">Image to be added</span>}
+    </div>
+  );
+}
+// A trip cover: the picture and the country name under it both open the gallery.
+function Trip({ i, col, row }: { i: number; col: number; row: number }) {
+  const t = trips[i];
+  return (
+    <Link href={'/visuals/' + t.slug} className="trip-c rv" style={{ gridColumn: col, gridRow: row }}>
+      <div className="si"><img src={`/img/${t.cover}.jpg`} alt={`${t.title} gallery`} loading="lazy" /></div>
+      <span className="cap">{t.title}</span>
+    </Link>
+  );
 }
 
 export default function Visuals() {
   return (
-    <>
-      <Collage target="#trips" />
+    <div className="white">
       <section className="sam" id="trips">
         <div className="grid6">
-          {/* Row 1 */}
+          {/* Row 1: general text, four trips, general text */}
           <Text i={0} col={1} row={1} />
-          <Img src="v-birds" col={2} row={1} link="/visuals/egypt" />
-          <Img src="v-faces" col={3} row={1} />
-          <Img src="v-camel" col={4} row={1} />
-          <Img src="v-sail" col={5} row={1} link="/visuals/vietnam" />
+          <Trip i={0} col={2} row={1} />
+          <Trip i={1} col={3} row={1} />
+          <Trip i={2} col={4} row={1} />
+          <Trip i={3} col={5} row={1} />
           <Text i={1} col={6} row={1} />
           {/* Row 2 */}
           <Img src="me-1317" col={1} row={2} p />
-          <Img col={2} row={2} />
+          <Img src="p-0689" col={2} row={2} />
           <Img src="v-sand" col={3} row={2} p />
-          <Img src="v-smoke" col={4} row={2} link="/visuals/nigeria" />
+          <Img src="p-0685" col={4} row={2} />
           <Text i={2} col={5} row={2} />
-          <Img src="v-ivory" col={6} row={2} p />
+          <Img src="me-night" col={6} row={2} p />
           {/* Row 3 */}
-          <Img col={1} row={3} />
-          <Img col={2} row={3} />
+          <Img src="p-0680" col={1} row={3} />
+          <Img src="p-0682" col={2} row={3} />
           <Text i={3} col={3} row={3} />
-          <Img col={4} row={3} link="/visuals/uae" />
-          <Img col={5} row={3} />
-          <Img col={6} row={3} />
+          <Img src="p-0688" col={4} row={3} />
+          <Img src="v-faces" col={5} row={3} />
+          <Img src="me-6122" col={6} row={3} p />
         </div>
       </section>
-      <Footer />
-    </>
+      <Collage />
+      <Footer light />
+    </div>
   );
 }

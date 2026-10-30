@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import HeroClock from './_c/HeroClock';
+import HeroSlides from './_c/HeroSlides';
 import { heroPhotos, pages } from '@/content/site';
 
 export default function Home() {
-  const n = Math.max(heroPhotos.length, 1);
   return (
     <>
       {/* The home page is the hero. It does not scroll on desktop. */}
       <section className="hero" aria-label="Introduction">
-        <div className="bg">
-          {heroPhotos.map((p, i) => (<img key={p} src={`/img/${p}.jpg`} alt="" style={{ animationDelay: `${i * 10}s`, animationName: heroPhotos.length > 1 ? undefined : 'zoom', opacity: heroPhotos.length > 1 ? undefined : 1 }} />))}
-        </div>
+        <HeroSlides photos={heroPhotos} />
         <div className="kjo"><img src="/mark/cross-fleur-white.png" alt="" /><span>KJO</span></div>
         <HeroClock />
         <div className="rbox"><span>Character, collection 001. Not yet released</span><span>[X]</span></div>

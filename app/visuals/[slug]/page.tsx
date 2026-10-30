@@ -11,13 +11,12 @@ export default async function Trip({ params }: { params: Promise<{ slug: string 
   if (!t) notFound();
   const slots = Math.max(t.images.length, 4);
   return (
-    <>
+    <div className="white">
       <section className="sam trip">
         <div className="tt">
           <Link href="/visuals" className="back">‹ Visuals</Link>
-          <span className="n">{t.n}</span>
           <h1>{t.title}</h1>
-          <span>{t.kind}</span>
+          <span>Photography</span>
           <p>{t.text}</p>
         </div>
         <div className="tg">
@@ -26,7 +25,7 @@ export default async function Trip({ params }: { params: Promise<{ slug: string 
             : <div key={i} className="si g rv"><span className="ghost">Photograph to be added</span></div>)}
         </div>
       </section>
-      <Footer />
-    </>
+      <Footer light />
+    </div>
   );
 }

@@ -13,7 +13,7 @@ const tiles = [
 ];
 const css = (s: string): React.CSSProperties => Object.fromEntries(s.split(';').map((x) => { const [k, v] = x.split(':'); return [k.replace(/-(\w)/g, (_, c) => c.toUpperCase()), v]; }));
 
-export default function Collage({ target }: { target: string }) {
+export default function Collage() {
   const el = useRef<HTMLElement>(null);
   useEffect(() => {
     const m = (e: MouseEvent) => {
@@ -30,7 +30,6 @@ export default function Collage({ target }: { target: string }) {
         {tiles.map((t, i) => (<div key={i} className="c" data-d={t.d} style={css(t.s)}><img src={`/img/${t.img}.jpg`} alt="" style={t.pos ? { objectPosition: t.pos } : undefined} /></div>))}
         <div className="word"><img src="/mark/designedbykjo-hd-black.png" alt="DesignedByKJO" /></div>
         <div className="note">A personal collection, <em>on my own terms.</em></div>
-        <a className="down" href={target} aria-label="Scroll down"><svg viewBox="0 0 24 40" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v34M3 27l9 9 9-9" /></svg></a>
       </section>
       <section className="collage-m" aria-label="Visuals">
         <div className="ttl2">Visuals<br /><span className="it">Photography and film</span></div>
