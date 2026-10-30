@@ -24,7 +24,7 @@ export default function FieldNotes() {
           </div>
         </div>
       </section>
-      <Footer dark />
+      <Footer />
     </>
   );
 }

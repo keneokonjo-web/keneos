@@ -1,17 +1,21 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-export default function HeroSlides({ photos }: { photos: string[] }) {
+// Hard cuts, no fades. Every image is mounted up front so nothing has to load or decode at the moment of a cut.
+export default function HeroSlides({ photos, light = [] }: { photos: string[]; light?: string[] }) {
   const [i, setI] = useState(0);
   useEffect(() => {
     if (photos.length < 2) return;
-    const id = setInterval(() => setI((v) => (v + 1) % photos.length), 4500);
+    const id = setInterval(() => setI((v) => (v + 1) % photos.length), 4000);
     return () => clearInterval(id);
   }, [photos.length]);
+  useEffect(() => {
+    document.documentElement.classList.toggle('hero-light', light.includes(photos[i]));
+    return () => { document.documentElement.classList.remove('hero-light'); };
+  }, [i, photos, light]);
   return (
     <div className="bg">
-      {photos.map((p, k) => (<img key={p} src={`/img/${p}.jpg`} alt="" className={k === i ? 'on' : ''} />))}
-      {photos.length > 1 && <div className="ctr">{String(i + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</div>}
+      {photos.map((p, k) => (<img key={p} src={`/img/${p}.jpg`} alt="" decoding="sync" className={(k === i ? 'on' : '') + (light.includes(p) ? ' light' : '')} />))}
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { brand, pages } from '@/content/site';
 
 const left = [{ href: '/visuals', label: 'Visuals' }, { href: '/field-notes', label: 'Field Notes' }];
-const right = [{ href: '/work', label: 'Work' }, { href: '/projects', label: 'Projects' }, { href: '/designedbykjo', label: 'DesignedByKJO' }];
+const right = [{ href: '/designedbykjo', label: 'Clothing' }, { href: '/projects', label: 'Projects' }];
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -111,6 +111,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             ))}
           </div>
           <div className="foot"><span>{brand.mark}</span><span>Contents</span></div>
+          <div className="marq" aria-hidden="true"><div className="mt" lang="ar">{Array.from({ length: 8 }).map((_, k) => (<span key={k}>لا يمكنك أن تعلّم الأعمى كيف يرى<i>✦</i></span>))}</div></div>
         </div>
       </nav>
 

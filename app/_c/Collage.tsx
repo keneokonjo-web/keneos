@@ -28,13 +28,11 @@ export default function Collage() {
       <section className="collage" ref={el} aria-label="Visuals">
         <div className="ttl">Visuals<br /><span className="it">Photography and film</span></div>
         {tiles.map((t, i) => (<div key={i} className="c" data-d={t.d} style={css(t.s)}><img src={`/img/${t.img}.jpg`} alt="" style={t.pos ? { objectPosition: t.pos } : undefined} /></div>))}
-        <div className="word"><img src="/mark/designedbykjo-hd-black.png" alt="DesignedByKJO" /></div>
         <div className="note">A personal collection, <em>on my own terms.</em></div>
       </section>
       <section className="collage-m" aria-label="Visuals">
         <div className="ttl2">Visuals<br /><span className="it">Photography and film</span></div>
         <div className="gr">{['cup', 'shutters', 'doors', 'tag', 'wall', 'stencil'].map((n) => (<img key={n} src={`/img/${n}.jpg`} alt="" loading="lazy" />))}</div>
-        <div className="word"><img src="/mark/designedbykjo-hd-black.png" alt="DesignedByKJO" /></div>
         <p>A personal collection, <em className="it">on my own terms.</em></p>
       </section>
     </>

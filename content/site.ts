@@ -21,11 +21,11 @@ export type PageEntry = {
 };
 
 export const pages: PageEntry[] = [
-  { n: '01', slug: 'visuals', title: 'Visuals', sub: 'Photography and film', img: 'cup', pos: '50% 60%' },
-  { n: '02', slug: 'field-notes', title: 'Field Notes', sub: 'The journal', img: 'wall', pos: '50% 40%' },
+  { n: '01', slug: 'designedbykjo', title: 'DesignedByKJO', sub: 'The clothing line', img: 'shutters', pos: '50% 30%' },
+  { n: '02', slug: 'visuals', title: 'Visuals', sub: 'Photography and film', img: 'cup', pos: '50% 60%' },
   { n: '03', slug: 'work', title: 'Work', sub: 'Professional', img: 'doors', pos: '50% 35%' },
-  { n: '04', slug: 'projects', title: 'Projects', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
-  { n: '05', slug: 'designedbykjo', title: 'DesignedByKJO', sub: 'The clothing line', img: 'shutters', pos: '50% 30%' },
+  { n: '04', slug: 'field-notes', title: 'Field Notes', sub: 'The journal', img: 'wall', pos: '50% 40%' },
+  { n: '05', slug: 'projects', title: 'Projects', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
 ];
 
 export const heroImages = ['cup', 'shutters', 'tag', 'wall', 'doors', 'stencil'];
@@ -98,7 +98,9 @@ export const notes = [
 
 // ---------- Home hero ----------
 // Photos that move through the hero. Add file names from /public/img (without .jpg).
-export const heroPhotos = ['p-0680', 'p-0685', 'p-0697', 'p-0699', 'p-0700'];
+export const heroPhotos = ['p-0680', 'p-0685', 'p-0699', 'p-0700'];
+// Slides where the page links need dark text to stay readable.
+export const heroLight = ['p-0699'];
 
 // ---------- Visuals: trips ----------
 // Each trip links to its own gallery page at /visuals/<slug>. Add file names to `images` when you have them.
@@ -131,8 +133,8 @@ export const companies: Company[] = [
   { code: 'K-002', slug: 'fieldwork', name: 'Fieldwork', url: 'https://fieldwork.estate', host: 'fieldwork.estate', preview: 'site-fieldwork',
     meta: ['Index: K-002', 'Type: Company', 'Site: fieldwork.estate'],
     text: ['Practical technology for estate agencies, brokerages and property developers.', 'Description to be added. A second short paragraph goes here.'] },
-  { code: 'K-003', slug: '42-events', name: '42 Events', url: 'https://fortytwo-alpha-eta.vercel.app', host: 'fortytwo-alpha-eta.vercel.app', preview: '',
-    meta: ['Index: K-003', 'Type: Company', 'Site: fortytwo-alpha-eta.vercel.app'],
+  { code: 'K-003', slug: '42-events', name: '42 Events', url: 'https://fourtytwo-alpha.vercel.app', host: 'fourtytwo-alpha.vercel.app', preview: 'site-42',
+    meta: ['Index: K-003', 'Type: Company', 'Site: fourtytwo-alpha.vercel.app'],
     text: ['Description to be added. A short paragraph about 42 Events, in your own words.', 'A second short paragraph goes here.'] },
   { code: 'K-004', slug: 'designedbykjo', name: 'DesignedByKJO', internal: '/designedbykjo', meta: [], text: [] },
 ];
@@ -142,3 +144,18 @@ export const companies: Company[] = [
 export const parked = {
   heroParagraph: 'A personal collection, on my own terms. Photography and film, field notes, a wardrobe and a clothing line named Character. Original by nature.',
 };
+
+// ---------- Clothing: product viewing ----------
+// Names and prices are placeholders. Replace the text; images are crops of the watercolour characters.
+export const products = [
+  { img: 'prod-jacket', name: 'Pinstripe jacket', price: '$000' },
+  { img: 'prod-longsleeve', name: 'White long sleeve', price: '$000' },
+  { img: 'prod-trouser', name: 'Wide pinstripe trouser', price: '$000' },
+  { img: 'prod-camo', name: 'Camo trouser', price: '$000' },
+  { img: 'prod-tee', name: 'Navy tee', price: '$000' },
+  { img: 'prod-grey', name: 'Grey wide trouser', price: '$000' },
+  { img: 'prod-beanie', name: 'Silver beanie', price: '$000' },
+];
+
+// ---------- Projects ----------
+export const heroProjects = ['h-cup', 'h-tag', 'h-shutters', 'h-doors', 'h-wall', 'h-stencil'];

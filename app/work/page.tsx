@@ -9,7 +9,7 @@ export default function Work() {
     <div className="white">
       <section className="wk">
         <div className="idx">
-          <h1>WORK INDEX</h1>
+          <h1>MY COMPANIES</h1>
           <ul>
             {companies.map((c) => (
               <li key={c.code}>
