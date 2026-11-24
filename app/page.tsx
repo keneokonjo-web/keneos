@@ -7,7 +7,7 @@ const mobileLinks = [
   { href: '/visuals', label: 'Visuals' },
   { href: '/field-notes', label: 'Field Notes' },
   { href: '/designedbykjo', label: 'Clothing' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/lookbook', label: 'Lookbook' },
 ];
 
 export default function Home() {

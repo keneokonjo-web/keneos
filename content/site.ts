@@ -25,7 +25,7 @@ export const pages: PageEntry[] = [
   { n: '02', slug: 'visuals', title: 'Visuals', sub: 'Photography and film', img: 'cup', pos: '50% 60%' },
   { n: '03', slug: 'work', title: 'Work', sub: 'Professional', img: 'doors', pos: '50% 35%' },
   { n: '04', slug: 'field-notes', title: 'Field Notes', sub: 'The journal', img: 'wall', pos: '50% 40%' },
-  { n: '05', slug: 'projects', title: 'Projects', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
+  { n: '05', slug: 'lookbook', title: 'Lookbook', sub: 'Personal', img: 'stencil', pos: '50% 50%' },
 ];
 
 export const heroImages = ['cup', 'shutters', 'tag', 'wall', 'doors', 'stencil'];
@@ -113,10 +113,10 @@ export const trips = [
 
 // General text blocks that sit in the Visuals grid. Write your own.
 export const blocks = [
-  { n: '1.1–1.4', title: 'TITLE TO BE ADDED', kind: 'Photography, Motion', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
-  { n: '2.1–2.4', title: 'TITLE TO BE ADDED', kind: 'Photography, Motion', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
-  { n: '3.1–3.3', title: 'TITLE TO BE ADDED', kind: 'Photography', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
-  { n: '4.1–4.4', title: 'TITLE TO BE ADDED', kind: 'Photography', text: 'Description to be added. A short paragraph about the work in this part of the grid, in your own words.' },
+  { n: '1.1–1.4', title: 'Framed in Heat', kind: 'Photography, Motion', text: 'The concept of photography is overlooked because the simplest things can be captured in such an amazing way.' },
+  { n: '2.1–2.4', title: 'Wander', kind: 'Photography, Motion', text: 'Most of it was never planned. A road, a market, a stranger at the right moment, and the camera already in hand.' },
+  { n: '3.1–3.3', title: 'Quiet Light', kind: 'Photography', text: 'Morning and evening do most of the work. The job is to be standing in the right place when the light arrives.' },
+  { n: '4.1–4.4', title: 'Evidence of Place', kind: 'Photography', text: 'A doorway, a cup on a stool, a wall with its history showing. Proof that somewhere was real, and that I was there.' },
 ];
 
 // ---------- Work index ----------
@@ -148,19 +148,19 @@ export const parked = {
 // ---------- Clothing: product viewing ----------
 // Names and prices are placeholders. Replace the text; images are crops of the watercolour characters.
 export const products = [
-  { img: 'prod-jacket', name: 'Pinstripe jacket', price: '$185' },
-  { img: 'prod-longsleeve', name: 'White long sleeve', price: '$95' },
-  { img: 'prod-trouser', name: 'Wide pinstripe trouser', price: '$140' },
-  { img: 'prod-camo', name: 'Camo trouser', price: '$165' },
-  { img: 'prod-tee', name: 'Navy tee', price: '$55' },
-  { img: 'prod-grey', name: 'Grey wide trouser', price: '$120' },
-  { img: 'prod-beanie', name: 'Silver beanie', price: '$45' },
+  { img: 'prod-jacket', name: 'Pinstripe jacket', price: '' },
+  { img: 'prod-longsleeve', name: 'White long sleeve', price: '' },
+  { img: 'prod-trouser', name: 'Wide pinstripe trouser', price: '' },
+  { img: 'prod-camo', name: 'Camo trouser', price: '' },
+  { img: 'prod-tee', name: 'Navy tee', price: '' },
+  { img: 'prod-grey', name: 'Grey wide trouser', price: '' },
+  { img: 'prod-beanie', name: 'Silver beanie', price: '' },
 ];
 
 // ---------- Projects ----------
 export const heroProjects = ['h-cup', 'h-tag', 'h-shutters', 'h-doors', 'h-wall', 'h-stencil'];
 
-// ---------- Personal (the /projects page): getting to know me ----------
+// ---------- Personal (the /lookbook page): getting to know me ----------
 // Album years and film details are from public sources; correct them here if needed.
 export const asake = {
   name: 'Asake',

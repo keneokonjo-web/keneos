@@ -1,9 +1,9 @@
 import Footer from '../_c/Footer';
 import Personal from '../_c/Personal';
 
-export const metadata = { title: 'Personal' };
+export const metadata = { title: 'Lookbook' };
 
-export default function Projects() {
+export default function Lookbook() {
   return (
     <div className="white">
       <Personal />

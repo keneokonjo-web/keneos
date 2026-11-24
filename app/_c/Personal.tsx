@@ -15,7 +15,7 @@ export default function Personal() {
             <div className="mv-g">
               {m.imgs.map((im, k) => (
                 <figure key={im} className={'cr k' + (k + 1)} style={{ transitionDelay: k * 160 + 'ms' }}>
-                  <img src={`/img/${im}.jpg`} alt={k === 0 ? m.title : ''} loading="lazy" />
+                  <img src={`/img/${im}.jpg`} alt={k === 0 ? m.title : ''} loading="eager" decoding="async" />
                 </figure>
               ))}
             </div>

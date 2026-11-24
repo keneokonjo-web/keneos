@@ -755,3 +755,30 @@ html.home,html.home body{overflow:hidden!important;height:100%}
 .fn-col{width:auto;border:0;padding:0;background:none}
 .fn-ul{display:inline-flex;align-items:flex-start;text-align:left;gap:clamp(10px,1.4vw,16px)}
 @media(max-width:700px){.fn-side{opacity:.1}}
+
+/* ======== round 5 ======== */
+.mv-g img{animation:none}
+
+/* field notes: editorial autobiography */
+.ed{background:#fff;color:#0a0a0b;font-family:"Sveningsson","Instrument",sans-serif;padding:clamp(86px,8vw,118px) var(--gut) 0}
+.ed *{font-family:"Sveningsson","Instrument",sans-serif}
+.ed .mono{font-family:"Plex",monospace}
+.ed-h{border-bottom:1px solid #0a0a0b;padding-bottom:16px}
+.ed-h h1{font-weight:400;font-size:clamp(54px,11vw,190px);line-height:.9;letter-spacing:0;margin-left:-.03em}
+.ed-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:11px}
+.ed-lede{max-width:1100px;margin:clamp(40px,7vw,110px) auto}
+.ed-lede p{font-size:clamp(26px,3.4vw,54px);line-height:1.12;letter-spacing:-.01em}
+.ed-sec{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,3vw,56px);align-items:start;padding:clamp(30px,5vw,70px) 0;border-top:1px solid rgba(0,0,0,.2)}
+.ed-sec.flip{grid-template-columns:minmax(0,.55fr) minmax(0,1fr) minmax(0,1.1fr)}
+.ed-sec.flip .ed-t{order:3}.ed-sec.flip .ed-f{order:2}
+.ed-k{font-size:11px;padding-top:.6em}
+.ed-t p{font-size:clamp(16px,1.3vw,20px);line-height:1.55;margin-bottom:1.1em;max-width:560px}
+.ed-a{border-bottom:1px solid #0a0a0b;padding-bottom:2px;transition:opacity .3s}.ed-a:hover{opacity:.5}
+.ed-f img{width:100%;height:auto;max-height:78svh;object-fit:cover;display:block}
+.ed-f img.ed-c{object-fit:contain;background:#f4f4f1;padding:6%}
+.ed-f figcaption{margin-top:10px;font-size:10px;opacity:.6}
+.ed-q{font:400 clamp(44px,9vw,150px)/.95 "Sveningsson","Instrument",sans-serif;letter-spacing:0;text-align:center;padding:clamp(40px,7vw,110px) 0;border-top:1px solid rgba(0,0,0,.2)}
+.ed-end{border-top:1px solid #0a0a0b;padding:clamp(40px,6vw,90px) 0 0;max-width:640px;margin:0 auto;text-align:center}
+.ed-end p{font-size:clamp(20px,2vw,30px);line-height:1.25;margin-bottom:18px}
+.ed-end span{font-size:11px;opacity:.6}
+@media(max-width:900px){.ed-sec,.ed-sec.flip{grid-template-columns:1fr}.ed-sec.flip .ed-t,.ed-sec.flip .ed-f{order:0}.ed-k{padding-top:0}}
